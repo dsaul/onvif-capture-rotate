@@ -1,0 +1,11 @@
+version: '2.0'
+services:
+  ovif-capture-rotate:
+    build:
+      context: ../
+      dockerfile: ./docker/dockerfile.txt
+    container_name: ovif-capture-rotate
+    image: maskawanian/ovif-capture-rotate:latest
+    restart: always
+    volumes:
+      - ./config.ini:/app/config.ini

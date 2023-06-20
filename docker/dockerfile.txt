@@ -1,0 +1,37 @@
+FROM maskawanian/debian-node-build:bookworm as build
+ADD ./backend /source
+WORKDIR /source
+#RUN ls -lR
+RUN yarn install && yarn build
+
+# Stage 2 - api & web server
+FROM maskawanian/debian-node-build:bookworm AS dist
+
+# Add packages we need.
+RUN apt-get update && apt-get install -y \
+	bash \
+	&& rm -rf /var/lib/apt/lists/*
+RUN mkdir -p /app
+
+WORKDIR /app
+COPY --from=build /source/dist .
+
+CMD ["node", "main.js"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

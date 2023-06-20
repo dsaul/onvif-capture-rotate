@@ -1,3 +1,4 @@
+// (c) 2023 Dan Saul
 import { ref, Ref } from 'vue';
 import { ICamera } from './ICamera';
 import ini from 'ini';

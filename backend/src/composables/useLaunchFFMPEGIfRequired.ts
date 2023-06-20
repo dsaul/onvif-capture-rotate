@@ -1,3 +1,4 @@
+// (c) 2023 Dan Saul
 import isEmpty from '../isEmpty';
 import { ICamera } from "../ICamera";
 import { Ref, ref } from 'vue';

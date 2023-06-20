@@ -1,3 +1,4 @@
+// (c) 2023 Dan Saul
 import { ICamera } from "../ICamera";
 import { Ref } from 'vue';
 import { Cam } from 'onvif';

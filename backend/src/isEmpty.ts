@@ -1,3 +1,4 @@
+// (c) 2023 Dan Saul
 import { isEmpty as lodash_isEmpty } from 'lodash';
 
 export default (payload: string | null | undefined | ''): payload is null | undefined | '' => {

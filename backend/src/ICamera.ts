@@ -1,3 +1,4 @@
+// (c) 2023 Dan Saul
 import { ChildProcess } from 'child_process';
 import { Cam } from 'onvif';
 

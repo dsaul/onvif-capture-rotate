@@ -1,3 +1,4 @@
+// (c) 2023 Dan Saul
 import { Ref, computed } from 'vue';
 import fs from 'fs';
 import isEmpty from '../isEmpty';

@@ -1,17 +1,27 @@
-FROM maskawanian/debian-node-build:bookworm as build
+FROM node:18-bookworm as build
 ADD ./backend /source
 WORKDIR /source
 #RUN ls -lR
 RUN yarn install && yarn build
 
 # Stage 2 - api & web server
-FROM maskawanian/debian-node-build:bookworm AS dist
+FROM node:18-bookworm AS dist
 
 # Add packages we need.
 RUN apt-get update && apt-get install -y \
 	bash \
-	&& rm -rf /var/lib/apt/lists/*
+	ffmpeg \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& npm install -g \ 
+	vue@3.2.47 \
+	check-disk-space@3.4.0 \
+	ini@4.1.1 \
+	lodash@4.17.21 \
+	onvif@0.6.8 \
+	uuid@9.0.0
 RUN mkdir -p /app
+ENV NODE_PATH=/usr/share/node_modules:/usr/local/lib/node_modules
+ENV NODE_ENV=production
 
 WORKDIR /app
 COPY --from=build /source/dist .

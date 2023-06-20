@@ -8,4 +8,5 @@ services:
     image: maskawanian/ovif-capture-rotate:latest
     restart: always
     volumes:
+      - ./data-CCTV:/CCTV
       - ./config.ini:/app/config.ini

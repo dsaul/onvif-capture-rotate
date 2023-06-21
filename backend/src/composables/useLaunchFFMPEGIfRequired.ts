@@ -67,7 +67,7 @@ const useLaunchFFMPEGIfRequired = (
 			const ffmpegArgs = [];
 			ffmpegArgs.push(...[
 				'-i', uriStr, // the rtsp stream to save
-				
+				'-err_detect', 'explode',
 				'-acodec', 'copy', // just copy the audio stream
 				'-map', '0', // select all streams
 				'-f', 'segment', // we want to save the stream in a collection of files

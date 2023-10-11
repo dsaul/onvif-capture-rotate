@@ -59,7 +59,9 @@ const useLaunchFFMPEGIfRequired = (
 					return prev;
 				});
 				
-				await fs.promises.unlink(path.join(cameraMediaRoot.value, oldest.filename));
+				const pathToUnlink = path.join(cameraMediaRoot.value, oldest.filename);
+				console.info(`[${camera.value.host}:${camera.value.port}] unlinking ${pathToUnlink}`);
+				await fs.promises.unlink(pathToUnlink);
 			}
 			
 			const filePath = path.join(cameraMediaRoot.value, `${normalizedName}-%Y-%m-%d_%H-%M-%S.mkv`);

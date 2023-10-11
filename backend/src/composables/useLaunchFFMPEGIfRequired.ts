@@ -48,12 +48,12 @@ const useLaunchFFMPEGIfRequired = (
 					
 					return {
 						filename: filename,
-						createdAt: stat.birthtimeMs,
+						ctimeMs: stat.ctimeMs,
 					};
 				})
 				
 				const oldest = mkvFilesSized.reduce((prev, current) => {
-					if (prev.createdAt < current.createdAt) {
+					if (prev.ctimeMs < current.ctimeMs) {
 						return current;
 					}
 					return prev;

@@ -48,12 +48,12 @@ const useLaunchFFMPEGIfRequired = (
 					
 					return {
 						filename: filename,
-						ctimeMs: stat.ctimeMs,
+						mtimeMs: stat.mtimeMs,
 					};
 				})
 				
 				const oldest = mkvFilesSized.reduce((prev, current) => {
-					if (prev.ctimeMs < current.ctimeMs) {
+					if (prev.mtimeMs > current.mtimeMs) {
 						return current;
 					}
 					return prev;
@@ -77,6 +77,7 @@ const useLaunchFFMPEGIfRequired = (
 				'-reset_timestamps', '1', // the saved file should have its own timestamps
 				'-segment_format', 'mkv', // use the container format mkv, because it rocks
 				'-strftime', '1', // we want to do advanced filename replacements
+				'-loglevel', 'quiet', // reduce logging
 			]);
 			
 			switch (camera.value?.transpose) {
